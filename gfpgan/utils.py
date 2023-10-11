@@ -106,7 +106,9 @@ class GFPGANer():
             img = cv2.resize(img, (512, 512))
             self.face_helper.cropped_faces = [img]
         else:
+            import time
             self.face_helper.read_image(img)
+            time_taken = time.time()
             # get face landmarks for each face
             self.face_helper.get_face_landmarks_5(only_center_face=only_center_face, eye_dist_threshold=5)
             # eye_dist_threshold=5: skip faces whose eye distance is smaller than 5 pixels
